@@ -49,13 +49,17 @@ function App() {
   return (
     <div className="App">
       <h1>Firebase Authentication</h1>
-      <button onClick={signInWithGoogle}>Sign in With Google</button>
-      <button onClick={signInWithGithub}>Sign in With Github</button>
-      <button onClick={signOutHandler}>Sign Out</button>
+      {user.email ? (
+        <button onClick={signOutHandler}>Sign Out</button>
+      ) : (
+        <>
+          <button onClick={signInWithGoogle}>Sign in With Google</button>
+          <button onClick={signInWithGithub}>Sign in With Github</button>
+        </>
+      )}
 
       <h2>Name:{user.displayName}</h2>
       <p>Email:{user.email}</p>
-      
     </div>
   );
 }
